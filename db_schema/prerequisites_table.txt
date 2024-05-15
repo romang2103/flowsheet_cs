@@ -1,0 +1,16 @@
+INSERT INTO prerequisites (module_id, prerequisite_id) VALUES (9, 1); -- ECS505U requires ECS401U
+INSERT INTO prerequisites (module_id, prerequisite_id) VALUES (10, 9); -- ECS506U requires ECS505U
+INSERT INTO prerequisites (module_id, prerequisite_id) VALUES (14, 1); -- ECS522U requires ECS401U
+INSERT INTO prerequisites (module_id, prerequisite_id) VALUES (19, 1); -- ECS605U requires ECS401U
+INSERT INTO prerequisites (module_id, prerequisite_id) VALUES (19, 2); -- ECS605U also requires ECS414U
+INSERT INTO prerequisites (module_id, prerequisite_id) VALUES (20, 1); -- ECS610U requires ECS401U
+INSERT INTO prerequisites (module_id, prerequisite_id) VALUES (22, 2); -- ECS639U requires ECS414U
+INSERT INTO prerequisites (module_id, prerequisite_id) VALUES (25, 2); -- ECS652U requires ECS414U
+INSERT INTO prerequisites (module_id, prerequisite_id) VALUES (25, 8); -- ECS652U also requires ECS421U
+INSERT INTO prerequisites (module_id, prerequisite_id) VALUES (32, 2); -- ECS657U requires ECS414U
+INSERT INTO prerequisites (module_id, prerequisite_id) VALUES (34, 2); -- ECS658U requires ECS414U
+INSERT INTO prerequisites (module_id, prerequisite_id) VALUES (28, 13); -- ECS671U requires ECS519U
+INSERT INTO prerequisites (module_id, prerequisite_id) VALUES (26, 12); -- ECS642U requires ECS518U
+INSERT INTO prerequisites (module_id, prerequisite_id) VALUES (33, 14); -- ECS661U requires ECS522U
+
+select * from prerequisites

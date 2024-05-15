@@ -1,0 +1,15 @@
+CREATE TABLE modules (
+    id SERIAL PRIMARY KEY,
+    module_code VARCHAR,
+    module_title VARCHAR,
+    year VARCHAR,
+    semester BOOLEAN
+);
+
+CREATE TABLE prerequisites (
+    id SERIAL PRIMARY KEY,
+    module_id INTEGER,
+    prerequisite_id INTEGER,
+    FOREIGN KEY (module_id) REFERENCES modules(id),
+    FOREIGN KEY (prerequisite_id) REFERENCES modules(id)
+);
