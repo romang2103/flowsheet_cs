@@ -1,14 +1,20 @@
 import { sql } from "@vercel/postgres";
 
 export async function GET(request) {
-  const { rows } = await sql`SELECT * FROM modules`;
-  return Response.json(rows);
-
-  // const data = {
-  //   id: 1,
-  //   name: "test",
-  //   description: "description",
-  // };
-
-  // return Response.json(data);
+  try {
+    const { rows } = await sql`SELECT * FROM modules`;
+    console.log("Fetched rows:", rows); // Add for debugging
+    return new Response(JSON.stringify(rows), {
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-store",
+      },
+    });
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return new Response(JSON.stringify({ error: "Failed to fetch data" }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
 }

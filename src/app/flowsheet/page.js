@@ -11,16 +11,23 @@ export default function Page() {
   const [cache, setCache] = useState({});
 
   useEffect(() => {
-    fetch("api/modules")
-      .then((res) => res.json())
-      .then((data) => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/api/modules", { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        console.log("Fetched data:", data); // Add for debugging
         setData(data);
         setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data: ", error);
+      } catch (error) {
+        console.error("Error fetching data:", error);
         setIsLoading(false);
-      });
+      }
+    };
+
+    fetchData();
   }, []);
 
   const processData = (data) => {
@@ -73,12 +80,14 @@ export default function Page() {
     }
 
     const prerequisiteResponse = await fetch(
-      `/api/prerequisites?module_id=${module_id}`
+      `/api/prerequisites?module_id=${module_id}`,
+      { cache: "no-store" }
     );
     const prerequisiteData = await prerequisiteResponse.json();
 
     const requirementResponse = await fetch(
-      `/api/requirements?module_id=${module_id}`
+      `/api/requirements?module_id=${module_id}`,
+      { cache: "no-store" }
     );
     const requirementData = await requirementResponse.json();
 
@@ -157,6 +166,7 @@ export default function Page() {
               className=" w-10/12 px-4 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border border-gray-200"
               colSpan={4}
             >
+              Modules
               <span className="ml-2">
                 <FontAwesomeIcon
                   icon={faCircle}
