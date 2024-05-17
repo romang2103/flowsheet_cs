@@ -2,7 +2,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
-import "../styles/highlight.css"; // Import the CSS file
+import "./styles/highlight.css";
 
 export default function Page() {
   const [data, setData] = useState([]);
